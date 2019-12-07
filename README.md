@@ -16,6 +16,7 @@ if you don't use an interceptor,  you have to handle the above requirement for e
 You need to add the interceptor at the root level in the component tree. I have put it in App.js because index.js have used to redux, saga integration and also inside intercepter, redux action have been dispatched. 
 
 #### Note:
+
 Need to change response code as below in backend
 401: access token response
 408: refresh token response
