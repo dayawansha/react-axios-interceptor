@@ -17,7 +17,7 @@ You need to add the interceptor at the root level in the component tree. I have 
 
 #### Note:
 
-Need to change response code as below in backend
+Need to change response code as below in backend.
 401: access token response
 408: refresh token response
 
