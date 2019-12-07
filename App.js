@@ -1,6 +1,6 @@
 /**
  * @author : Dushman Nalin
- * @date : November 30, 2019
+ * @date : November 1, 2019
  */
 import React from "react";
 import "./App.scss";
@@ -18,7 +18,7 @@ import { logOutAction } from "../src/middleware/action/admin/actionIndexSaga";
 import * as  actionIndexRedux from '../src/redux/action/admin/actionIndexRedux';
 import store  from '../src/redux/store/store';
 import ErrorBoundary from './component/common/ErrorBoundary/ErrorBoundary';
-// import store from './redux/store/store';
+
 
 /**
  * this interceptor will add the access_token for all request's
