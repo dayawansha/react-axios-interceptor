@@ -1,9 +1,6 @@
 /**
  * @author : Dushman Nalin
  * @date : November 30, 2019
- * @version : 1.0
- * @ changes: added redux and saga and axios interceptors
- * @copyright : © 2010-2019 Information International Limited. All Rights Reserved
  */
 import React from "react";
 import "./App.scss";
@@ -63,8 +60,7 @@ axios.interceptors.response.use(
     error => {
         const originalRequest = error.config;
 
-        let requestUrl = process.env.REACT_APP_BASE_URL + process.env.REACT_APP_PREFIX + process.env.REACT_APP_MODULE_ADMIN
-            + process.env.REACT_APP_OAUTH_LOGIN;
+        let requestUrl = process.env.REACT_APP_BASE_URL + process.env.REACT_APP_OAUTH_LOGIN;
 
         store.dispatch(actionIndexRedux.deactivateLoader());
         if (error.response.status === 401 && !originalRequest._retry && requestUrl != configObject.url) {
@@ -74,8 +70,6 @@ axios.interceptors.response.use(
 
             return axios.post(
                 process.env.REACT_APP_BASE_URL +
-                process.env.REACT_APP_PREFIX +
-                process.env.REACT_APP_MODULE_ADMIN +
                 process.env.REACT_APP_OAUTH_REFRESH,
                 {
                     userName: userName,
@@ -92,15 +86,12 @@ axios.interceptors.response.use(
                         path:process.env.REACT_APP_FRONT_END_BASE_URL
                     });
                     // this.props.deactivateLoader();
-                    axios.defaults.headers.common["Authorization"] =
-                        "Bearer " + newResponse.data.access_token;
-                    originalRequest.headers["Authorization"] =
-                        "Bearer " + newResponse.data.access_token;
+                    axios.defaults.headers.common["Authorization"] ="Bearer " + newResponse.data.access_token;
+                    originalRequest.headers["Authorization"] ="Bearer " + newResponse.data.access_token;
                     return axios(originalRequest);
                 });
         } else if (error.response.status === 408) {
-            // console.log("error.response.status === 408");
-
+         
             window.history.pushState(process.env.REACT_APP_FRONT_END_BASE_URL, "root", "/session-time-out");
 
             Cookies.remove("access_token", {
@@ -142,7 +133,7 @@ class App extends React.Component {
     render() {
         let loader = this.props.loaderStatus;
         return (
-            <div className="theme-midnightBlue ">
+            <div>
             <Loader loading={loader.loaderStatus} />
         {/* <ErrorBoundary> */}
          <LoginController {...this.props} {...this.state} {...this.functions} />
