@@ -10,7 +10,7 @@ Requirement:
 
 if you don't use an interceptor,  you have to handle the above requirement for each Axios (AJAX) calls.
 
-Where to add interceptor in react app.
+##Where to add interceptor in react app.
 
 You need to add the interceptor at the root level in the component tree. I have put it in App.js because index.js have used to redux, saga integration and also inside intercepter, redux action have been dispatched. 
 
