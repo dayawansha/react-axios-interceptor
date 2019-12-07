@@ -6,3 +6,5 @@ when you integrate an oauth2 protocol into a react app probably you need an inte
 Requirement: 
 1. when the access token is expired, you need to get a new access token and update cookies or local storage or redux store with latest access token.
 2. when the refresh token is expired, you need to logout from the system.
+
+if you don't use an interceptor,  you have to handle the above requirement for each Axios (AJAX) calls. 
